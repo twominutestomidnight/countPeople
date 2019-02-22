@@ -1,0 +1,137 @@
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 499
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>192.168.30.50</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>94:e1:ac:9a:47:4f</macAddress>
+<channelID>1</channelID>
+<dateTime>2019-02-22T10:47:19+02:00</dateTime>
+<activePostCount>1</activePostCount>
+<eventType>IO</eventType>
+<eventState>active</eventState>
+<eventDescription>IO alarm</eventDescription>
+<inputIOPortID>1</inputIOPortID>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 657
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>192.168.30.50</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>94:e1:ac:9a:47:4f</macAddress>
+<channelID>1</channelID>
+<dateTime>2019-02-22T10:47:19+02:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>PeopleCounting</eventType>
+<eventState>active</eventState>
+<eventDescription>PeopleCounting alarm</eventDescription>
+<statisticalMethods>realTime</statisticalMethods>
+<RealTime>
+<time>2019-02-22T10:46:12+02:00</time>
+</RealTime>
+<enter>57</enter>
+<exit>37</exit>
+<pass>0</pass>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 714
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>192.168.30.50</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>94:e1:ac:9a:47:4f</macAddress>
+<channelID>1</channelID>
+<dateTime>2019-02-22T10:47:19+02:00</dateTime>
+<activePostCount>0</activePostCount>
+<eventType>PeopleCounting</eventType>
+<eventState>active</eventState>
+<eventDescription>PeopleCounting alarm</eventDescription>
+<statisticalMethods>timeRange</statisticalMethods>
+<TimeRange>
+<startTime>2019-02-22T10:46:00+02:00</startTime>
+<endTime>2019-02-22T10:47:00+02:00</endTime>
+</TimeRange>
+<enter>1</enter>
+<exit>0</exit>
+<pass>0</pass>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 499
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>192.168.30.50</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>94:e1:ac:9a:47:4f</macAddress>
+<channelID>1</channelID>
+<dateTime>2019-02-22T10:47:20+02:00</dateTime>
+<activePostCount>2</activePostCount>
+<eventType>IO</eventType>
+<eventState>active</eventState>
+<eventDescription>IO alarm</eventDescription>
+<inputIOPortID>1</inputIOPortID>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 499
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>192.168.30.50</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>94:e1:ac:9a:47:4f</macAddress>
+<channelID>1</channelID>
+<dateTime>2019-02-22T10:47:20+02:00</dateTime>
+<activePostCount>3</activePostCount>
+<eventType>IO</eventType>
+<eventState>active</eventState>
+<eventDescription>IO alarm</eventDescription>
+<inputIOPortID>1</inputIOPortID>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 499
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>192.168.30.50</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>94:e1:ac:9a:47:4f</macAddress>
+
+<channelID>1</channelID>
+<dateTime>2019-02-22T10:47:20+02:00</dateTime>
+<activePostCount>4</activePostCount>
+<eventType>IO</eventType>
+<eventState>active</eventState>
+<eventDescription>IO alarm</eventDescription>
+<inputIOPortID>1</inputIOPortID>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 499
+
+<EventNotificationAlert version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+<ipAddress>192.168.30.50</ipAddress>
+<portNo>80</portNo>
+<protocol>HTTP</protocol>
+<macAddress>94:e1:ac:9a:47:4f</macAddress>
+<channelID>1</channelID>
+<dateTime>2019-02-22T10:47:21+02:00</dateTime>
+<activePostCount>5</activePostCount>
+<eventType>IO</eventType>
+<eventState>active</eventState>
+<eventDescription>IO alarm</eventDescription>
+<inputIOPortID>1</inputIOPortID>
+</EventNotificationAlert>
+--boundary
+Content-Type: application/xml; charset="UTF-8"
+Content-Length: 499
+

@@ -5,7 +5,7 @@ def getEnter(block):
         enterValue = (int)(re.findall(r'<enter>(.*?)<\/enter>', block, re.DOTALL)[0])
         return enterValue
     except:
-        print("wrong reg rx")
+        #print("wrong reg rx")
         return -1
 
 
@@ -14,5 +14,5 @@ def getTime(block):
         timeAlarm = re.findall(r'<dateTime>(.*?)<\/dateTime>', block, re.DOTALL)[0]
         return timeAlarm
     except:
-        print("wrong reg rx")
+        #print("wrong reg rx")
         return -1

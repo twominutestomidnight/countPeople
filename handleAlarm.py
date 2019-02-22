@@ -1,67 +1,70 @@
 import re
 from lightON import light
 from getValues import getEnter,getTime
+import requests
+from requests.auth import HTTPDigestAuth
+import sys
+import argparse
+import json
+def createParser ():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-c', '--config', default='config.json')
+    return parser
+parser = createParser()
+namespace = parser.parse_args (sys.argv[1:])
 
 
-#rint(dataSplit[1])
+with open(namespace.config) as config_file:
+    config = json.load(config_file)
 
+
+f = open(config['file_for_log'], "w")
+f2 = open(config['file_for_alarm'], "w")
 def alarm(startEnterValue):
     #str1 = "<eventState>active</eventState>"
     str2 = "<eventDescription>IO alarm</eventDescription>"
     srt3 = "<eventType>PeopleCounting</eventType>"
     str4 = "<eventType>videoloss</eventType>"
     #str5 = "<enter>0</enter>"
-    log = open("ll.log", "a")
-    logEnter = open("llEnter.log", "a")
     count_enter = 0
     flag = False
-    i = 0
-    #while(True):
+    url_alert = 'http://{}/ISAPI/Event/notification/alertStream'.format(config['camera_ip'])
 
-    #f = open("test2.log", "r")
-    while True:
-        #f = open("test2.log", "r")
-        #f = open("19022019v3.txt", "r")
-        f = open(r"19022019v3.txt", "r")
-        dataFull = f.read()
-        dataSplit = dataFull.split('\n\n')
-        for block in dataSplit:
-            small_block = block.split('\n')
-            for row in small_block:
-                if row == str2:
-                    flag = True
-                    # startTime = re.findall(r'<dateTime>(.*?)</dateTime>', block, re.DOTALL)[0]
-                    # print(startTime)
-                    # print("IO alarm :", row)
-                    break
-                if row == srt3 and flag == True:
-                    #enterValue = (int)(re.findall(r'<enter>(.*?)<\/enter>', block, re.DOTALL)[0])
-                    enterValue = getEnter(block)
-                    print("enterValue", enterValue)
-                    print("startEnterValue", startEnterValue)
+    #r = requests.get(url_alert, auth=HTTPDigestAuth('admin', 'Admin12345'), stream=True)
+    r = requests.get(url_alert, auth=HTTPDigestAuth(config['login'], config['password']), stream=True)
+    for line in r.iter_lines():
+        line = line.decode("utf-8")
+        f.write(line + "\n")
+        #print(line)
+        if line == str2:
+            f2.write("io alarm : " + line + "\n")
+            flag = True
+            # startTime = re.findall(r'<dateTime>(.*?)</dateTime>', block, re.DOTALL)[0]
+            # print(startTime)
+            # print("IO alarm :", row)
 
-                    #logEnter.close()
-                    if enterValue > startEnterValue:
-                        count_enter += 1
-                        logEnter.write("enter : " + str(enterValue) + "\t StartEnterValue : " + str(startEnterValue) + "\n")
-                        startEnterValue = enterValue
-                        if count_enter > 1:
-                            #timeAlarm = re.findall(r'<dateTime>(.*?)</dateTime>', block, re.DOTALL)[0]
-                            timeAlarm = getTime(block)
-                            log.write("alarm!, people in : "+ str(count_enter) + "\t" + timeAlarm + "\n")
-                            logEnter.write("alarm!, enter : " + str(enterValue) + "\t StartEnterValue : " + str(startEnterValue) + "\n")
-                            print("alarm!")
-                            light(10)
-                    else:
-                        break
+        if flag == True:
+            #enterValue = (int)(re.findall(r'<enter>(.*?)<\/enter>', block, re.DOTALL)[0])
+            enterValue = getEnter(line)
+            if enterValue != -1:
+                #print("enterValue", enterValue)
+                #print("startEnterValue", startEnterValue)
+                f2.write("startEnterValue : "+ str(startEnterValue) + "\t" + "enterValue : "+ str(enterValue) +" \n")
+                #logEnter.close()
+                if enterValue > startEnterValue:
+                    count_enter += 1
+                    #print(count_enter)
+                    f2.write("count_enter : " + str(count_enter) + "\n")
+                    startEnterValue = enterValue
+                    if count_enter > 1:
+                        #timeAlarm = re.findall(r'<dateTime>(.*?)</dateTime>', block, re.DOTALL)[0]
+                        #timeAlarm = getTime(line)
+                        f2.write("alarm!, io count_enter : " + line + "\n")
+                        #print("alarm!")
+                        light(config['alarm_time'])
 
-                if row == str4:
-                    flag = False
-                    count_enter = 0
 
-                i += 1
+        if line == str4:
+            flag = False
+            count_enter = 0
 
-        print("count_enter: ", count_enter)
-        #open("llEnter.log", 'w').close()
-        #f.close()
-        #open(r'C:\Users\User\PycharmProjects\bitrate\19022019v3.txt', 'w').close()

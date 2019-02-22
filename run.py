@@ -1,14 +1,8 @@
-import os
-import threading
-
-def printit():
-    threading.Timer(120, printit).start()
-    print("Hello, World!")
-    os.system('taskkill /IM "curl.exe" /F')
-printit()
+from handleAlarm import alarm
+from getCurrentPeople import getStartPeopleValue
 
 
-
-#os.system('taskkill /IM "curl.exe" /F')
-
-#print(date+1)
+if __name__ == '__main__':
+    startValue = getStartPeopleValue()
+    print(startValue)
+    alarm(startValue)
